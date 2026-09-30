@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Royal King's Advanger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #btn-exit-gz {
+            position: absolute;
+            top: 20px;
+            left: 200px;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.8);
+            color: #22d3ee;
+            border: 1px solid rgba(34, 211, 238, 0.4);
+            border-radius: 12px;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        #btn-exit-gz:hover {
+            background: #22d3ee;
+            color: #0f172a;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="start-screen">
+        <div id="img-loading-indicator">
+            <div class="loader-small"></div>
+            <span class="loading-text-small">Visualizing Kingdom...</span>
+        </div>
+
+        <div class="start-content">
+            <div class="bg-crown-icon">👑</div>
+            <h1>ROYAL KING'S<br>ADVANGER</h1>
+            <p class="subtitle">Reclaim the lost treasury of your ancestors.</p>
+
+            <div class="name-box">
+                <label for="king-name-input">The Proclamation of</label>
+                <input type="text" id="king-name-input" value="RANA" maxlength="12" placeholder="Your Name">
+            </div>
+
+            <button id="btn-start" class="main-btn">Start</button>
+            <button onclick="window.parent.postMessage('EXIT_GAME_ZONE', '*')" style="margin-top:15px; background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); padding: 12px 30px; border-radius: 30px; cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Back to Game Zone</button>
+        </div>
+    </div>
+
+    <div id="pause-screen">
+        <h1>GAME PAUSED</h1>
+        <p>Take a royal rest, Sire.</p>
+        <button id="btn-resume" class="main-btn">RESUME</button>
+        <button onclick="window.parent.postMessage('EXIT_GAME_ZONE', '*')" style="margin-top:15px; background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); padding: 12px 30px; border-radius: 30px; cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Back to Game Zone</button>
+    </div>
+
+    <div id="level-complete-screen">
+        <h1>VICTORY!</h1>
+        <p id="lc-text">The royal treasury is secure.</p>
+        <button id="btn-next" class="main-btn">NEXT LEVEL</button>
+    </div>
+
+    <div id="game-over-screen">
+        <h1 id="go-title">RECLAIM FAILED</h1>
+        <div class="result-box">
+            <p class="result-text" id="go-result">Gold Harvested: 0</p>
+        </div>
+        <button id="btn-retry" class="main-btn">RETRY</button>
+        <button onclick="window.parent.postMessage('EXIT_GAME_ZONE', '*')" style="margin-top:15px; background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); padding: 12px 30px; border-radius: 30px; cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Back to Game Zone</button>
+    </div>
+
+    <div id="ui">
+        <div class="stat-card">
+            <div class="stat-item" id="king-name-display">KING: RANA</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-item" id="level-display">LEVEL: 1</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-item" id="timer-display">⏳ 60s</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-item" id="coin-goal">🪙 0 / 5</div>
+        </div>
+        <button id="pause-trigger" onclick="togglePause()">⏸ PAUSE (P)</button>
+        <button id="btn-exit-gz" onclick="window.parent.postMessage('EXIT_GAME_ZONE', '*')">🏠 Exit Game</button>
+    </div>
+
+    <div id="minimap-container">
+        <canvas id="minimap-canvas" width="200" height="200"></canvas>
+    </div>
+
+    <div id="mobile-controls">
+        <div id="joystick-base">
+            <div id="joystick-handle"></div>
+        </div>
+        <div id="jump-btn">JUMP</div>
+    </div>
+
+    <div id="ai-controls">
+        <button class="ai-btn" id="btn-lore" onclick="generateWorldLore()">📜 Decree</button>
+        <button class="ai-btn" id="btn-wisdom" style="display:none;" onclick="getMushroomWisdom()">🕯️ Advice</button>
+    </div>
+
+    <div id="ai-overlay">
+        <div id="ai-text">...</div>
+    </div>
+
+    <div id="vignette"></div>
+    <div class="canvas-container" id="game-canvas"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="game.js"></script>
+
+</body>
+
+</html>

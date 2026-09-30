@@ -1,0 +1,35 @@
+{
+  "entities": {
+    "UserScore": {
+      "title": "User Score",
+      "description": "A record of a user's total score and game statistics.",
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "The user's display name."
+        },
+        "totalScore": {
+          "type": "integer",
+          "description": "The cumulative score across all games."
+        },
+        "gamesPlayed": {
+          "type": "integer",
+          "description": "Total number of games the user has participated in."
+        },
+        "lastPlayed": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last time the user played."
+        }
+      },
+      "required": ["username", "totalScore"]
+    }
+  },
+  "firestore": {
+    "/leaderboard/{userId}": {
+      "schema": "UserScore",
+      "description": "Global leaderboard entries for each user."
+    }
+  }
+}

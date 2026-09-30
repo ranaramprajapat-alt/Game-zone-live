@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+  :root {
+    --app-height: 100vh;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply antialiased text-slate-900;
+    min-height: 100dvh;
+    overscroll-behavior-y: none;
+    background-image: url('/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .sketch-bg-plain {
+    background-color: #ffffff;
+  }
+
+  /* Warm paper texture */
+  .sketch-bg-paper {
+    background-color: #fffdf7;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba(15, 23, 42, 0.03) 0px,
+        rgba(15, 23, 42, 0.03) 1px,
+        transparent 1px,
+        transparent 9px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(15, 23, 42, 0.02) 0px,
+        rgba(15, 23, 42, 0.02) 1px,
+        transparent 1px,
+        transparent 11px
+      );
+  }
+
+  /* Graph paper */
+  .sketch-bg-graph {
+    background-color: #ffffff;
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+      linear-gradient(rgba(99, 102, 241, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+
+  /* Notebook paper with margin */
+  .sketch-bg-notebook {
+    background-color: #ffffff;
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(244, 63, 94, 0.25) 0px,
+        rgba(244, 63, 94, 0.25) 2px,
+        transparent 2px,
+        transparent 100%
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 26px,
+        rgba(59, 130, 246, 0.18) 27px,
+        rgba(59, 130, 246, 0.18) 28px
+      );
+    background-size: 100% 100%, 100% 28px;
+    background-position: 44px 0, 0 10px;
+  }
+
+  /* Crosshatch sketch shading */
+  .sketch-bg-crosshatch {
+    background-color: #ffffff;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba(15, 23, 42, 0.07) 0px,
+        rgba(15, 23, 42, 0.07) 1px,
+        transparent 1px,
+        transparent 10px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(15, 23, 42, 0.05) 0px,
+        rgba(15, 23, 42, 0.05) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+  }
+
+  /* Blueprint grid */
+  .sketch-bg-blueprint {
+    background-color: #0b2a4a;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+
+  /* Charcoal paper */
+  .sketch-bg-charcoal {
+    background-color: #111827;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.05) 0px,
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 7px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 9px
+      );
+  }
+
+  /* Ludo (classic board / "king"-style inspired) */
+  .ludo-wood {
+    background-color: #f2e1c3;
+    background-image:
+      radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.65), transparent 55%),
+      radial-gradient(circle at 78% 86%, rgba(15, 23, 42, 0.12), transparent 62%),
+      repeating-linear-gradient(
+        90deg,
+        rgba(121, 78, 32, 0.09) 0px,
+        rgba(121, 78, 32, 0.09) 2px,
+        transparent 2px,
+        transparent 18px
+      );
+  }
+
+  .ludo-board-surface {
+    background-color: #fbf6ea;
+    background-image:
+      radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.9), transparent 62%),
+      repeating-linear-gradient(
+        0deg,
+        rgba(15, 23, 42, 0.025) 0px,
+        rgba(15, 23, 42, 0.025) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+  }
+}
